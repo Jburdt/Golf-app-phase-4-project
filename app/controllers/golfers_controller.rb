@@ -13,6 +13,10 @@ class GolfersController < ApplicationController
     render json: golfer, status: :created
   end
 
+  def show
+    render json: @current_golfer
+  end
+
   private 
   #Golfer permitted params
   def golfer_params
