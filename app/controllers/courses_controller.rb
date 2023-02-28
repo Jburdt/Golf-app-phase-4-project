@@ -6,4 +6,15 @@ class CoursesController < ApplicationController
     render json: courses
   end
 
+  #Get /courses/:id
+  def show
+    course = find_course
+    render json: course
+  end
+
+  private
+  def find_course
+    Course.all.find(params[:id])
+  end
+
 end
