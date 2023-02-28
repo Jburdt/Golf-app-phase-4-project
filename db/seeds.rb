@@ -5,7 +5,7 @@ Golfer.destroy_all
 Course.destroy_all
 TeeTime.destroy_all
 
-# Golfers
+#Golfers
 josh = Golfer.create!(name: "Josh", password: "1234", username: "josh")
 mike = Golfer.create!(name: "Mike", password: "1234", username: "mike")
 jared = Golfer.create!(name: "Jared", password: "1234", username: "jared")
@@ -25,6 +25,5 @@ tee_times2 = TeeTime.create!(golfer: mike, drink_rating: 5, greens: "slow", cour
 tee_times3 = TeeTime.create!(golfer: jared, drink_rating: 3, greens: "fast", course: the_mines, time: 1000)
 tee_times4 = TeeTime.create!(golfer: lizzie, drink_rating: 1, greens: "slow", course: grand_rapids_country_club, time: 1100)
 tee_times5 = TeeTime.create!(golfer: jordan, drink_rating: 2, greens: "fast", course: water_mark, time: 1200)
-
 
 puts 'Done Seeding'
