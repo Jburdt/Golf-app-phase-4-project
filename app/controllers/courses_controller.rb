@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-
   #GET /courses
   def index
     courses = Course.all 

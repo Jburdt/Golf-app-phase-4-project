@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     golfer = Golfer.find_by(username: params[:username])
     if user&.authenticate(params[:password])
       session[:golfer_id] = golfer.id
-      render json: golfer
+      render json: golfer, status: :created
     else
-      render json: { errors: { "Invalid username or password" }}, status: :unauthorized
+      render json: { error: { "Invalid username or password" }}, status: :unauthorized
     end
   end
 
@@ -19,3 +19,4 @@ class SessionsController < ApplicationController
   end
 
 end
+

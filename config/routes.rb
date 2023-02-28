@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   resources :courses, only: [:index, :show]
   resources :tee_times
-  resources :golfers
+  resources :golfers, only: [:index]
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "golfers#create"
+  get "/me", to: "golfers#show"
 
 
   # Routing logic: fallback requests for React Router.

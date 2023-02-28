@@ -1,18 +1,20 @@
 class GolfersController < ApplicationController
+  skip_before_action :authorize, only: [:create, :show]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  skip_before_action :authorize, only: :create
 
   def index
     golfers = Golfer.all
     render json: golfers
   end
 
+  #/signup & logging in 
   def create
     golfer = Golfer.create!(golfer_params)
     session[:golfer_id] = golfer.id
     render json: golfer, status: :created
   end
 
+  #Shows existing user/ stays logged in
   def show
     render json: @current_golfer
   end
@@ -29,3 +31,5 @@ class GolfersController < ApplicationController
   end
 
 end
+
+# WHY CAN'T I GET TO /GOLFERS 
