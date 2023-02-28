@@ -21,7 +21,7 @@ water_mark = Course.create!(name: "Water Mark", address:"5500 Cascade Rd SE Gran
 
 #TeeTimes
 tee_times1 = TeeTime.create!(golfer: josh, drink_rating: 4, greens: "fast", course: indian_trails, time: 800)
-tee_times2 = TeeTime.create!(golfer: mike, drink_rating: 5, greens: "slow", course: cascade_hills, time: 900)
+tee_times2 = TeeTime.create!(golfer: mike, drink_rating: 5, greens: "slow", course: cascade_hills, time: 9000)
 tee_times3 = TeeTime.create!(golfer: jared, drink_rating: 3, greens: "fast", course: the_mines, time: 1000)
 tee_times4 = TeeTime.create!(golfer: lizzie, drink_rating: 1, greens: "slow", course: grand_rapids_country_club, time: 1100)
 tee_times5 = TeeTime.create!(golfer: jordan, drink_rating: 2, greens: "fast", course: water_mark, time: 1200)
