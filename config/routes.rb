@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :golfers
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  post "/signup", to: "user#create"
+  post "/signup", to: "golfers#create"
 
 
   # Routing logic: fallback requests for React Router.
