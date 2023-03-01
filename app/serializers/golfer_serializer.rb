@@ -1,5 +1,5 @@
 class GolferSerializer < ActiveModel::Serializer
-  attributes :id, :name, :password, :username
+  attributes :id, :name, :username
 
   has_many :tee_times
 end
