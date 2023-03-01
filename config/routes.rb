@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 end
 
 
-# or create a new create method in sessions for a new golfer?
+
 # Sessions only keeps track of login/ logout / signup so I stll need to make all CRUD in needed controllers
 # WHY is the password null?
 # teetime table should just be time

@@ -43,7 +43,7 @@ class GolfersController < ApplicationController
 
   #Golfer permitted params
   def golfer_params
-    params.permit(:username, :password_confirmation, :name)
+    params.permit(:username, :password, :name)
   end
 
   # INVALID DATA RESPONSE
