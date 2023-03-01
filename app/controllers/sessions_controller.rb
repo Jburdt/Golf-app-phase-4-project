@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: :create
+  skip_before_action :authorize, only: :createp
 
   #Storing which golfer is currently logged in
   def create

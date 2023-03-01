@@ -1,3 +1,3 @@
 class GolferSerializer < ActiveModel::Serializer
-  attributes :name, :password
+  attributes :id, :name, :password, :username
 end

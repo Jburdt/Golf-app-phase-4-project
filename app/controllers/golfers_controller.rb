@@ -1,7 +1,8 @@
 class GolfersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :show]
+  # skip_before_action :authorize, only: [:create, :show]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
+  # Renders all Golfers
   def index
     golfers = Golfer.all
     render json: golfers
@@ -19,10 +20,29 @@ class GolfersController < ApplicationController
     render json: @current_golfer
   end
 
+  #Deletes golfer
+  def destroy
+    @golfer = find_golfer
+    @golfer.destroy
+    head :no_content
+  end
+
+  #Patch Updates golfer params
+  def update
+    @golfer = find_golfer
+    @golfer.update(golfer_params)
+    render json: @golfer
+  end
+
   private 
+  #Finds golfer by ID
+  def find_golfer
+    @golfer = Golfer.all.find(params[:id])
+  end
+
   #Golfer permitted params
   def golfer_params
-    params.permit(:username, :password)
+    params.permit(:username, :password_confirmation, :name)
   end
 
   # INVALID DATA RESPONSE
@@ -31,5 +51,3 @@ class GolfersController < ApplicationController
   end
 
 end
-
-# WHY CAN'T I GET TO /GOLFERS 
