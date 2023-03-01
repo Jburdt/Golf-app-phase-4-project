@@ -18,7 +18,7 @@ class GolfersController < ApplicationController
   #Shows existing user/ stays logged in
   def show
     @golfer = find_golfer
-    render json: @golfer, include: :tee_times
+    render json: @golfer
   end
 
   #Deletes golfer
