@@ -1,4 +1,5 @@
 class TeeTimesController < ApplicationController
+  skip_before_action :authorize,only: [:index, :destroy]
 
   #gets all teetimes
   def index
@@ -17,6 +18,13 @@ class TeeTimesController < ApplicationController
     @t_time = find_ttimes
     @t_time.update!(tt_params)
     render json: @t_time
+  end
+
+  #Delete teetime
+  def destroy
+    @t_time = find_ttimes
+    @t_time.destroy
+    head :no_content
   end
 
   private

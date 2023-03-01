@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :courses, only: [:index, :show]
-  resources :tee_times
+  resources :tee_times, except: [:show]
   resources :golfers
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -18,3 +18,4 @@ end
 #Sessions only keeps track of login/ logout / signup so I stll need to make all CRUD in needed controllers
 # WHY is the password null?
 # teetime table should just be time
+# should not need to see a show route in tee_time because you see them with the golfer?
