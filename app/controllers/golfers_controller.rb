@@ -1,5 +1,5 @@
 class GolfersController < ApplicationController
-  # skip_before_action :authorize, only: [:create, :show]
+  skip_before_action :authorize, only: [:create, :show, :index]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   # Renders all Golfers
@@ -17,7 +17,8 @@ class GolfersController < ApplicationController
 
   #Shows existing user/ stays logged in
   def show
-    render json: @current_golfer
+    @golfer = find_golfer
+    render json: @golfer, include: :tee_times
   end
 
   #Deletes golfer

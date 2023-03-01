@@ -1,3 +1,3 @@
 class CourseSerializer < ActiveModel::Serializer
-  attributes :name, :address, :state, :cost, :image, :final_score
+  attributes :id, :name, :address, :state, :cost, :image, :final_score
 end
