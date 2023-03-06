@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authorize
 
-  #Signup
+  #/Signup
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id
