@@ -1,11 +1,16 @@
 import React from 'react'
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 const Home = () => {
   return (
-    <>Welocme To How'd Ya Golf!
+    <h1>Welocme To How'd Ya Golf!
+      <p>
+        Login in below or signup!
+      </p>
       <LoginForm/>
-    </>
+      <SignupForm/>
+    </h1>
   )
 }
 

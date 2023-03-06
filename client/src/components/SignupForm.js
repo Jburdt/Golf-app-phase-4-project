@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-const signup = () => {
+const SignupForm = () => {
+
+
   return (
     <form onSubmit={null}>
     <input
@@ -20,4 +22,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default SignupForm;
