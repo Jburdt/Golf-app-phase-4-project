@@ -31,19 +31,23 @@ useEffect(() => {
 
   return (
     <form onSubmit={handleSubmit}>
-    <input
-      placeholder='Username'
-      type="text"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)}
-      />
-    <input
-      placeholder='Password'
-      type="text"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Login</button>
+      <label htmlFor="username">Username:</label>
+      <input
+        placeholder='Username'
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        />
+       <label htmlFor="password">Password:</label>
+      <input
+        placeholder='password'
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Log In</button>
+        <br />
+        <button>Don't have an account? Sign up here.</button>
   </form>
   )
 }
