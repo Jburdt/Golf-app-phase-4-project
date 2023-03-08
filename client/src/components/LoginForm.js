@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-const LoginForm = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [user, setUser] = useState(null);
-
-useEffect(() => {
-      // auto-login
-      fetch("/me").then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
-        }
-      });
-    }, []);
-  
-    // if (!user) return <Login onLogin={setUser} />;
+  const LoginForm = ({toggleForm, user, setUser}) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -26,29 +14,34 @@ useEffect(() => {
       body: JSON.stringify({ username, password }),
     })
     .then((response) => response.json())
-    .then(() => setUser)
+    // .then((user) => console.log(user))
+    .then((data) => setUser(data))
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input
-        placeholder='Username'
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        />
-       <label htmlFor="password">Password:</label>
-      <input
-        placeholder='password'
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log In</button>
-        <br />
-        <button>Don't have an account? Sign up here.</button>
-  </form>
+    <div className='auth-form-container'>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username:</label>
+        <input
+          placeholder='Username'
+          id='username'
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          />
+        <label htmlFor="password">Password:</label>
+        <input
+          placeholder='Password'
+          id='password'
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Log In</button>
+          <br />
+          <button onClick={() => toggleForm("SignupForm")}>Don't have an account? Sign up here.</button>
+    </form>
+  </div>
   )
 }
 

@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: :createp
+  skip_before_action :authorize
 
   #Storing which golfer is currently logged in
   def create
-    golfer = Golfer.find_by(username: params[:username])
+    user = user.find_by(username: params[:username])
     if user&.authenticate(params[:password])
-      session[:golfer_id] = golfer.id
-      render json: golfer, status: :created
+      session[:user_id] = user.id
+      render json: user, status: :created
     else
       render json: { error: { "Invalid username or password" }}, status: :unauthorized
     end
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   #Logout user
   def destroy
-    session.delete :golfer_id
+    session.delete :user_id
     head :no_content
   end
 

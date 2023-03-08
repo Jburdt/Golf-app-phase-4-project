@@ -22,7 +22,7 @@ grand_rapids_country_club = Course.create!(name: "Grand Rapids", address:"4300 L
 water_mark = Course.create!(name: "Water Mark", address:"5500 Cascade Rd SE Grand Rapids, MI 49546-9059", state: "MI", cost: 25.00, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrAmqsstlLmQhC-opt1sLiplbYP3s1OC0fA&usqp=CAU", final_score: 30)
 
 #TeeTimes
-# tee_times1 = TeeTime.create!(golfer: josh, drink_rating: 4, food_rating: 4, greens: "fast", course: indian_trails, time: 800)
+# tee_times1 = TeeTime.create!(user: josh, drink_rating: 4, food_rating: 4, greens: "fast", course: indian_trails, time: 800)
 tee_times2 = TeeTime.create!(golfer: mike, drink_rating: 5, food_rating: 4, greens: "slow", course: cascade_hills, time: 9000)
 tee_times3 = TeeTime.create!(golfer: jared, drink_rating: 3, food_rating: 4, greens: "fast", course: the_mines, time: 1000)
 tee_times4 = TeeTime.create!(golfer: lizzie, drink_rating: 1, food_rating: 4, greens: "slow", course: grand_rapids_country_club, time: 1100)

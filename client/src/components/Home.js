@@ -3,14 +3,17 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 
 const Home = () => {
+  const [currentForm, setCurrentForm] = useState("LoginForm");
 
-  const [currentForm, setCurrentForm] = useState("login");
+  const toggleForm = (formName) => {
+    setCurrentForm(formName)
+  };
 
   return (
     <> 
-      <h1>Welocme To How'd Ya Golf!</h1>
+      <h1>Welcome to Golf buddy!</h1>
       <p> Log in below or Sign up!</p>
-      <div>{ currentForm === "login" ? <LoginForm />  : <SignupForm /> }</div>
+      <div>{ currentForm === "LoginForm" ? <LoginForm toggleForm={toggleForm} />  : <SignupForm toggleForm={toggleForm} /> }</div>
     </>
   )
 }
