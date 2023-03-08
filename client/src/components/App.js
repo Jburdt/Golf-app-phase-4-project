@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import Navbar from './Navbar';
 import SignupForm from './SignupForm';
 
+
 const App = () => {
   const [user, setUser] = useState({});
 
@@ -17,7 +18,6 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      {/* <Router>  */}
       <Switch>
         <Route exact path="/">
           <Home user={user} setUser={setUser} />
@@ -32,7 +32,6 @@ const App = () => {
           <h1>400 Page not found</h1>
         </Route>
       </Switch>
-      {/* </Router> */}
     </div>
   )
 };
