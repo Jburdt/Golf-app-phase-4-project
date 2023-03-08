@@ -14,8 +14,8 @@ import React, { useState } from 'react';
       body: JSON.stringify({ username, password }),
     })
     .then((response) => response.json())
-    // .then((user) => console.log(user))
-    .then((data) => setUser(data))
+    .then((data) => console.log(data))
+    // .then((data) => setUser(data))
   };
 
   return (
