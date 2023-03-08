@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from './Home';
 import LoginForm from './LoginForm';
 import Navbar from './Navbar';
 import SignupForm from './SignupForm';
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     fetch("/me")
@@ -20,7 +20,7 @@ const App = () => {
       {/* <Router>  */}
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home user={user} setUser={setUser} />
         </Route>
         <Route path="/signup">
           <SignupForm />
