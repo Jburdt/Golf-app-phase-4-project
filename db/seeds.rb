@@ -4,11 +4,12 @@ puts "Destroying golf data! ☠️ "
 Golfer.destroy_all
 Course.destroy_all
 TeeTime.destroy_all
-# User.destroy_all
+User.destroy_all
 
+# Users
+josh = User.create!(username: "josh", password: "1234" )
 
 #Golfers
-# josh = User.create!( password: "1234", username: "josh")
 mike = Golfer.create!(name: "Mike", password: "1234", username: "mike")
 jared = Golfer.create!(name: "Jared", password: "1234", username: "jared")
 lizzie = Golfer.create!(name: "Lizzie", password: "1234", username: "lizzie")

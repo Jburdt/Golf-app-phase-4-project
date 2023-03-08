@@ -1,5 +1,5 @@
 class GolfersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :show, :index]
+  skip_before_action :authorize, only: [:create, :show]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   # Renders all Golfers
