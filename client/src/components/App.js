@@ -9,12 +9,16 @@ import SignupForm from './SignupForm';
 
 const App = () => {
   const [user, setUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch("/me")
     .then(resp => resp.json())
     // some logic here 
-    .then(setUser)
+    // if (user.ok) return <CourseList />
+    // .then(setUser(user))
+    .then(user => {setUser(user)
+      setLoggedIn(true)})
   }, []);
 
   return (

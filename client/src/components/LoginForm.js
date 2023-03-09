@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useHistory } from 'react-router-dom';
 
-  const LoginForm = ({ toggleForm, user, setUser }) => {
+  const LoginForm = ({ user, setUser }) => {
+    const history = useHistory("")
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -16,10 +19,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
       },
       body: JSON.stringify({ username, password }),
     })
-    .then((response) => response.json())
-    // .then((data) => console.log(data))
-    .then((user) => setUser(user))
-  };
+    .then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setUser(user)
+        history.push('/courses')})
+      }
+      else {
+      response.json().then((err) => {
+        setErrors(err.errors)
+      })
+    }
+  });
+}
 
   return (
     <div className='auth-form-container'>
@@ -29,7 +41,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         <Form.Control 
         type="text" 
         placeholder="Enter username" 
-        // id='username'
         value={username} 
         onChange={(e) => setUsername(e.target.value)}
         />
@@ -43,40 +54,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         <Form.Control 
         type="password" 
         placeholder="Password"
-        // id='password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
-      {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group> */}
       <Button variant="primary" type="submit">
         Log in
       </Button>
+      <div>
+        { errors }
+      </div>
     </Form>
-
-      {/* <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          placeholder='Username'
-          id='username'
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          />
-        <label htmlFor="password">Password:</label>
-        <input
-          placeholder='Password'
-          id='password'
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Log In</button>
-          <br />
-          <button onClick={() => toggleForm("SignupForm")}>Don't have an account? Sign up here.</button>
-    </form> */}
   </div>
   )
 }
