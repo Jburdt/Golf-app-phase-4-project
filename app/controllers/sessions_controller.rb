@@ -3,18 +3,18 @@ class SessionsController < ApplicationController
 
   #Storing which golfer is currently logged in
   def create
-    user = User.find_by(username: params[:username])
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      render json: user, status: :created
+    golfer = Golfer.find_by(username: params[:username])
+    if golfer&.authenticate(params[:password])
+      session[:golfer_id] = golfer.id
+      render json: golfer, status: :created
     else
       render json: { errors:  ["Invalid username or password"] }, status: :unauthorized
     end
   end
 
-  #Logout user
+  #Logout golfer
   def destroy
-    session.delete :user_id
+    session.delete :golfer_id
     head :no_content
   end
 

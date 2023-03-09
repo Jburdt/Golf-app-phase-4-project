@@ -17,7 +17,7 @@ class GolfersController < ApplicationController
 
   #Shows existing user/ stays logged in
   def show
-    @golfer = Golfer.all.find_by(id: session[:user_id])
+    @golfer = Golfer.find_by(id: session[:golfer_id])
     render json: @golfer
   end
 

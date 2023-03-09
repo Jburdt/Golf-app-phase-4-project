@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 const CourseCard = ({ course }) => {
 
+  // params to be edited
   const courseData = {name: course.name,
   address: course.address,
   cost: course.cost,
@@ -17,18 +18,21 @@ const CourseCard = ({ course }) => {
 
   // Update Feature
   const handleUpdate = () => {
-    console.log('Clicked')
-    // fetch(`http://localhost:3000/courses/${course.id}`), {
-    //   method: 'PATCH',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     courseData
-    //   }),
-    //   // .then(console.log(courseData))
-    // }
+    // console.log('Clicked')
+    fetch(`/courses/${course.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        courseData
+      ),
+    })
+    .then((res) => res.json())
+    .then((courseData) => console.log(courseData))
   };
+
+  // MAKE A CREATE FORM AND THEN A EDIT FORM!!!!!!
 
 
   return (
@@ -49,6 +53,7 @@ const CourseCard = ({ course }) => {
               <Button variant="danger">Delete</Button>{' '}
             </Card.Body>
           </Card>
+          <hr/>
         </Col>
       ))}
     </Row>

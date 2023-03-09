@@ -15,7 +15,7 @@ const CourseList = () => {
 
   return (
     <>
-    <h3>Below are the courses you have already played.</h3>
+      <h3>Below are the courses available to play.</h3>
       { courses.map((course) => <CourseCard course={course} key={course.id} />)}
     </>
   )

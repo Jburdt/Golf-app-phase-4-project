@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
+    // LOGIN FEATURE
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch("/login", {

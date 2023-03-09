@@ -56,45 +56,6 @@ const SignupForm = ({toggleForm}) => {
       Sign up
     </Button>
   </Form>
-
-    // <div className='auth-form-container'>
-    //   <form onSubmit={handleSubmit}>
-    //     <label htmlFor='name'>Full Name:</label>
-    //         <input
-    //           id='name'
-    //           placeholder='Full Name'
-    //           type="text"
-    //           value={name}
-    //           onChange={(e) => setName(e.target.value)}
-    //           />
-    //       <label htmlFor='username'>Username:</label>
-    //         <input
-    //           id='username'
-    //           placeholder='Username'
-    //           type="text"
-    //           value={username}
-    //           onChange={(e) => setUsername(e.target.value)}
-    //           />
-    //       <label htmlFor='password_confirmation'>Password:</label>
-    //         <input
-    //           id='password'
-    //           placeholder='Password'
-    //           type="password"
-    //           value={password}
-    //           onChange={(e) => setPassword(e.target.value)}
-    //           />
-    //       <label>Password Confirmation:</label>
-    //         <input
-    //           id='password_confirmation'
-    //           placeholder='Password Confimation'
-    //           type="password"
-    //           value={passwordConfirmation}
-    //           onChange={(e) => setPasswordConfirmation(e.target.value)}
-    //           />
-    //           <button type="submit">Sign Up!</button>
-    //             <button onClick={() => toggleForm("LoginForm")} type="button">Already have an account? Login here.</button>
-    //   </form>
-    // </div>
   )
 }
 
