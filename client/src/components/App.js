@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar setUser={setUser} user={user} />
       <Switch>
         <Route exact path="/">
           <Home user={user} setUser={setUser} />
@@ -37,6 +37,9 @@ const App = () => {
         <Route path="/courses">
           <CourseList />
         </Route>
+        {/* <Route path="/logout">
+          <LoginForm />
+        </Route> */}
         <Route path="*">
           <h1>400 Page not found</h1>
         </Route>
