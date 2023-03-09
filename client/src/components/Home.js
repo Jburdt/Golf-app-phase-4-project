@@ -11,7 +11,7 @@ const Home = ({ user, setUser}) => {
 
   return (
     <> 
-      <h1>Welcome to Golf buddy!</h1>
+      <h1>Welcome to Golf Buddy!</h1>
       <p> Log in below or Sign up!</p>
       <div>{ currentForm === "LoginForm" ? <LoginForm user={user} setUser={setUser} toggleForm={toggleForm} />  : <SignupForm toggleForm={toggleForm} /> }</div>
     </>

@@ -24,7 +24,7 @@ const SignupForm = ({toggleForm}) => {
       }),
     })
       .then((r) => r.json())
-      // .then(onLogin);
+      .then(data => console.log(data));
   };
 
   return (

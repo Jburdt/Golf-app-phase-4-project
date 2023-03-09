@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from "react-router-dom";
+import CourseList from './CourseList';
 import Home from './Home';
 import LoginForm from './LoginForm';
 import Navbar from './Navbar';
@@ -12,6 +13,7 @@ const App = () => {
   useEffect(() => {
     fetch("/me")
     .then(resp => resp.json())
+    // some logic here 
     .then(setUser)
   }, []);
 
@@ -27,6 +29,9 @@ const App = () => {
         </Route>
         <Route path="/Login">
           <LoginForm user={user} setUser={setUser} />
+        </Route>
+        <Route path="/courses">
+          <CourseList />
         </Route>
         <Route path="*">
           <h1>400 Page not found</h1>
