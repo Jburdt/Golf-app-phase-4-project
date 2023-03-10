@@ -26,6 +26,8 @@ const Navbar = ({ setUser, user }) => {
       <br/>
       <Link to="/courses">Courses</Link>
       <br/>
+      {/* <Link to="/NewCourseForm">NewCourseForm</Link> */}
+      <br/>
       <Button onClick={handleLogout} variant="danger">Logout</Button>{' '}
     </nav>
   </header> 

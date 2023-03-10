@@ -4,8 +4,8 @@ import CourseList from './CourseList';
 import Home from './Home';
 import LoginForm from './LoginForm';
 import Navbar from './Navbar';
+import NewCourseForm from './NewCourseForm';
 import SignupForm from './SignupForm';
-
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -22,21 +22,31 @@ const App = () => {
     <div>
       <Navbar setUser={setUser} user={user} />
       <Switch>
+
         <Route exact path="/">
           <Home user={user} setUser={setUser} />
         </Route>
+
         <Route path="/signup">
           <SignupForm user={user} setUser={setUser} />
         </Route>
+
         <Route path="/Login">
           <LoginForm user={user} setUser={setUser} />
         </Route>
+
         <Route path="/courses">
           <CourseList />
         </Route>
+
+        <Route path="/NewCourseForm">
+          <NewCourseForm />
+        </Route>
+
         <Route path="*">
           <h1>400 Page not found</h1>
         </Route>
+
       </Switch>
     </div>
   )

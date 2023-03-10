@@ -4,9 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-
-
-
 const CourseCard = ({ course }) => {
 
   // params to be edited
@@ -34,12 +31,11 @@ const CourseCard = ({ course }) => {
 
   // MAKE A CREATE FORM AND THEN A EDIT FORM!!!!!!
 
-
   return (
     <>
       <Row xs={1} md={2} className="g-4">
       {Array.from({ length: 1 }).map((_, idx) => (
-        <Col>
+        <Col key={idx}>
           <Card>
             <Card.Img variant="top" src={course.image} />
             <Card.Body>

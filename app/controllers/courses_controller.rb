@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
 
   #course strong params
   def course_params
-    params.permit(:name, :address, :state, :cost, :image, :final_score)
+    params.permit(:name, :address, :cost, :image, :final_score)
   end
 
 end
