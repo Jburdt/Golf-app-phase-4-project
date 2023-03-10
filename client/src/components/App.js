@@ -14,9 +14,6 @@ const App = () => {
   useEffect(() => {
     fetch("/me")
     .then(resp => resp.json())
-    // some logic here 
-    // if (user.ok) return <CourseList />
-    // .then(setUser(user))
     .then(user => {setUser(user)
       setLoggedIn(true)})
   }, []);
@@ -37,9 +34,6 @@ const App = () => {
         <Route path="/courses">
           <CourseList />
         </Route>
-        {/* <Route path="/logout">
-          <LoginForm />
-        </Route> */}
         <Route path="*">
           <h1>400 Page not found</h1>
         </Route>
