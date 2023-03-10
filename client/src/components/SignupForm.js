@@ -1,30 +1,44 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useHistory } from 'react-router-dom';
 
-
-const SignupForm = ({toggleForm}) => {
+// Sign up feature
+const SignupForm = ({ user, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
+  const [errors, setErrors] = useState([]);
+  const history = useHistory("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const user = {
+      name,
+        username,
+        password,
+        password_confirmation: passwordConfirmation
+    }
     fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name,
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-      }),
+      body: JSON.stringify(
+        user 
+      ),
     })
-      .then((r) => r.json())
-      .then(data => console.log(data));
+      .then((r) => {
+        if(r.ok) {
+          r.json().then(setUser)
+          history.push('/courses')
+        } else {
+          r.json().then((err) => {
+            setErrors(err.errors)
+          })
+        }
+      })
   };
 
   return (

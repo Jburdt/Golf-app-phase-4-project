@@ -26,7 +26,7 @@ const App = () => {
           <Home user={user} setUser={setUser} />
         </Route>
         <Route path="/signup">
-          <SignupForm />
+          <SignupForm user={user} setUser={setUser} />
         </Route>
         <Route path="/Login">
           <LoginForm user={user} setUser={setUser} />
