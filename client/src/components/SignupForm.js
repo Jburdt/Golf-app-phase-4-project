@@ -69,6 +69,11 @@ const SignupForm = ({ user, setUser }) => {
     <Button variant="primary" type="submit">
       Sign up
     </Button>
+    <div>
+      {errors.map((error, index) => {
+        return <li key={index}>{error}!</li>
+      })}
+    </div>
   </Form>
   )
 }
