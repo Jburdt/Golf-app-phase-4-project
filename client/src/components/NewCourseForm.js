@@ -12,10 +12,6 @@ const NewCourseForm = ({ addCourse }) => {
   const history = useHistory("");
   const [errors, setErrors] = useState([]);
 
-  //  ----> FIX ERROR/ MAKE THEM SHOW UP ON Form<------
-
-
-
   const handleSubmit = (e) =>{
     e.preventDefault()
 
@@ -34,8 +30,6 @@ const NewCourseForm = ({ addCourse }) => {
       },
       body: JSON.stringify(newCourse)
     })
-    // .then(r => r.json())
-    // .then(data => addCourse(data))
     .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
@@ -100,7 +94,9 @@ const NewCourseForm = ({ addCourse }) => {
         Add Course
       </Button>
 
-      <div>{errors}</div>
+      <div>{errors.map((error, index) => {
+        return <li key={index}>{error}!</li>
+      })}</div>
   </Form>
   )
 }

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
 
   const LoginForm = ({ user, setUser }) => {
-    const history = useHistory("")
+    const history = useHistory("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
