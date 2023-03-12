@@ -9,7 +9,8 @@ import SignupForm from './SignupForm';
 
 const App = () => {
   const [user, setUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     fetch("/me")
@@ -17,6 +18,20 @@ const App = () => {
     .then(user => {setUser(user)
       setLoggedIn(true)})
   }, []);
+
+    // Add new course
+    const addCourse = (newCourse) => {
+      setCourses([newCourse, ...courses])
+    };
+  
+    // Gets all the courses from backend
+    useEffect(() => {
+      fetch("/courses")
+      .then(res => res.json())
+      // .then(data => console.log(data))
+      .then(data => setCourses(data))
+      .catch(error => console.log(error))
+    }, []);
 
   return (
     <div>
@@ -36,11 +51,11 @@ const App = () => {
         </Route>
 
         <Route path="/courses">
-          <CourseList />
+          <CourseList courses={courses} />
         </Route>
 
         <Route path="/NewCourseForm">
-          <NewCourseForm />
+          <NewCourseForm addCourse={addCourse}/>
         </Route>
 
         <Route path="*">

@@ -41,7 +41,7 @@ const CourseCard = ({ course }) => {
             <Card.Body>
               <Card.Title>{course.name}</Card.Title>
               <Card.Text>{course.address}</Card.Text>
-              <Card.Text>${course.cost}</Card.Text>
+              <Card.Text>${parseFloat(course.cost).toFixed(2)}</Card.Text>
               <Button variant="primary">not needed yet</Button>{' '}
               <Button variant="secondary">not needed yet</Button>{' '}
               <Button variant="success">Book a Tee Time</Button>{' '}

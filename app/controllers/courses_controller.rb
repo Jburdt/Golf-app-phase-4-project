@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
   skip_before_action :authorize
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
 
   #GET /courses
   def index
@@ -35,6 +37,11 @@ class CoursesController < ApplicationController
   #course strong params
   def course_params
     params.permit(:name, :address, :cost, :image, :final_score)
+  end
+
+  # INVALID DATA RESPONSE
+  def render_unprocessable_entity_response(invalid)
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end

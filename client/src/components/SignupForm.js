@@ -50,12 +50,12 @@ const SignupForm = ({ user, setUser }) => {
 
     <Form.Group className="mb-3" controlId="Username">
       <Form.Label>Username</Form.Label>
-      <Form.Control type="text" placeholder="Username"  value={username} onChange={(e) => setUsername(e.target.value)}/>
+      <Form.Control type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="Password">
       <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password"  value={password} onChange={(e) => setPassword(e.target.value)}/>
+      <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="PasswordConfirmation">
