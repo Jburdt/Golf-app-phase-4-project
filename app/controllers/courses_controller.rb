@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
 
   #Updates couse 
   def update
+    # binding.pry
     @course = find_course
     @course.update!(course_params)
     render json: @course

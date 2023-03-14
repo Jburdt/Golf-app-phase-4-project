@@ -18,7 +18,7 @@ const App = () => {
     console.log(id)
   };
 
-  // EDIT TOOL FUNCTION 
+  // EDIT COURSE FUNCTION 
   const editCourse = (editedCourse) => {
     const updatedCourse = courses.map(course => {
       if (editedCourse.id === course.id) {

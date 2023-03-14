@@ -5,43 +5,54 @@ import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
 
 const EditCourseForm = ({ courses, editCourse }) => {
-  const {id} = useParams()
-  const history = useHistory()
-  const [name, setName] = useState()
-  const [address, setAddress] = useState()
-  const [cost, setCost] = useState()
-  const [image, setImage] = useState()
-  const [errors, setErrors] = useState([]);
+  const {id} = useParams();
+  const history = useHistory();
+  const [errors, setErrors] = useState([])
+  
+  const initialState = {
+    name: '',
+    address: '',
+    cost: '',
+    image: ''
+  }
+
+  const [formData, setFormData] = useState(initialState)
 
   useEffect(() => {
     if ( courses.length > 0) {
       const updatedCourse = courses.find(course => course.id === parseInt(id), 10)
-      console.log("updatedCourse", updatedCourse)
+      console.log("Delete me line 23 edit course form", updatedCourse)
+      setFormData({
+        name: updatedCourse.name,
+        address: updatedCourse.address,
+        cost: updatedCourse.cost,
+        image: updatedCourse.image
+      })
     }
   }, [courses])
 
+  const handleChange = (e) => {
+    const { name, value} = e.target
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    
-   const editCourse = {
-    name, 
-    address, 
-    cost, 
-    image
-   }
-
     fetch(`/courses/${id}`, {
       method: "PATCH",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(editCourse)
+      body: JSON.stringify(formData)
     })
     .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          editCourse(data)
+          setFormData(data)
         history.push('/courses')})
       }
       else {
@@ -62,9 +73,10 @@ const EditCourseForm = ({ courses, editCourse }) => {
         <Form.Label>Course Name</Form.Label>
         <Form.Control 
         type="text" 
+        name='name'
         placeholder="Enter Name" 
-        defaultValue={name}
-        onChange={(e) => setName(e.target.value)}
+        value={formData.name}
+        onChange={handleChange}
         />
       </Form.Group>
 
@@ -72,9 +84,10 @@ const EditCourseForm = ({ courses, editCourse }) => {
         <Form.Label>Address</Form.Label>
         <Form.Control 
         type="text" 
+        name='address'
         placeholder="Address"
-        defaultValue={address}
-        onChange={(e) => setAddress(e.target.value)}
+        value={formData.address}
+        onChange={handleChange}
         />
       </Form.Group>
 
@@ -82,9 +95,10 @@ const EditCourseForm = ({ courses, editCourse }) => {
         <Form.Label>Cost</Form.Label>
         <Form.Control 
         type="number" 
+        name='cost'
         placeholder="Cost" 
-        defaultValue={cost}
-        onChange={(e) => setCost(e.target.value)}
+        value={formData.cost}
+        onChange={handleChange}
         />
       </Form.Group>
 
@@ -92,9 +106,10 @@ const EditCourseForm = ({ courses, editCourse }) => {
         <Form.Label>Image</Form.Label>
         <Form.Control 
         type="text" 
+        name='image'
         placeholder="Image" 
-        defaultValue={image}
-        onChange={(e) => setImage(e.target.value)}
+        value={formData.image}
+        onChange={handleChange}
         />
       </Form.Group>
 
@@ -102,9 +117,9 @@ const EditCourseForm = ({ courses, editCourse }) => {
         Update Course
       </Button>
 
-      <div>{errors.map((error, index) => {
+      {<div>{errors.map((error, index) => {
         return <li key={index}>{error}!</li>
-      })}</div>
+      })}</div> }
   </Form>
   )
 }
