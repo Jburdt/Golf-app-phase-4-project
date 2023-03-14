@@ -3,33 +3,43 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
-const CourseCard = ({ course }) => {
-
+const CourseCard = ({ course, deleteCourse }) => {
+  // const course = { id, name, address, cost, image, final_score }
+  
   // params to be edited
-  const courseData = {name: course.name,
-  address: course.address,
-  cost: course.cost,
-  image: course.image,
-  final_score: course.final_score}
+  // const courseData = {
+  // name: course.name,
+  // address: course.address,
+  // cost: course.cost,
+  // image: course.image,
+  // final_score: course.final_score
+  // }
 
   // Update Feature
-  const handleUpdate = () => {
-    // console.log('Clicked')
-    fetch(`/courses/${course.id}`, {
-      method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(
-        courseData
-      ),
-    })
-    .then((res) => res.json())
-    .then((courseData) => console.log(courseData))
-  };
+  // const handleCourseUpdate = () => {
+  //   fetch(`/courses/${course.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(
+  //       courseData
+  //     ),
+  //   })
+  //   .then((res) => res.json())
+  //   .then((courseData) => console.log(courseData))
+  // };
 
   // MAKE A CREATE FORM AND THEN A EDIT FORM!!!!!!
+
+  const handleDeleteClick = (id) => {
+    fetch(`/courses/${id}`, {
+      method:"DELETE"
+    })
+    .then(() => deleteCourse(id))
+  };
 
   return (
     <>
@@ -45,8 +55,8 @@ const CourseCard = ({ course }) => {
               <Button variant="primary">not needed yet</Button>{' '}
               <Button variant="secondary">not needed yet</Button>{' '}
               <Button variant="success">Book a Tee Time</Button>{' '}
-              <Button onClick={handleUpdate} variant="warning">Edit</Button>{' '}
-              <Button variant="danger">Delete</Button>{' '}
+              <Link to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
+              <Link to="/courses" onClick={() => {handleDeleteClick(course.id)}} variant="danger">Delete</Link>{' '}
             </Card.Body>
           </Card>
           <hr/>

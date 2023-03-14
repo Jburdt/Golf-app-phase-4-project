@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :courses, only: [:index, :show, :create, :update]
+  resources :courses
   resources :tee_times, except: [:show]
   resources :golfers
   post "/login", to: "sessions#create"

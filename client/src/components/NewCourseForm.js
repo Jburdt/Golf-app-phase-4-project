@@ -62,8 +62,8 @@ const NewCourseForm = ({ addCourse }) => {
 
       <Form.Group className="mb-3" controlId="formBasicAddress">
         <Form.Label>Address</Form.Label>
-        <Form.Control t
-        ype="text" 
+        <Form.Control 
+        type="text" 
         placeholder="Address"
         value={address}
         onChange={(e) => setAddress(e.target.value)}

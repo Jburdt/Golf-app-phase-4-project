@@ -28,6 +28,13 @@ class CoursesController < ApplicationController
     render json: @course
   end
 
+  # Destroys course
+  def destroy
+    @course = find_course
+    @course.destroy
+    head :no_content
+  end
+
   private
   # finds course by :id
   def find_course

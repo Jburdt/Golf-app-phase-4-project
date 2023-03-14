@@ -2,11 +2,11 @@ import CourseCard from './CourseCard';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const CourseList = ({ courses }) => {
+const CourseList = ({ courses, editCourse, deleteCourse }) => {
   const history = useHistory();
 
   const renderNewForm = () => {
-     history.push('/NewCourseForm')
+     history.push(`/courses/new`)
   };
 
   return (
@@ -15,7 +15,7 @@ const CourseList = ({ courses }) => {
           <Button onClick={() => renderNewForm()} variant="primary" size="lg">
             Add new course
           </Button>
-      { courses.map((course) => <CourseCard course={course} key={course.id} />)}
+      { courses.map((course) => <CourseCard editCourse={editCourse} courses={courses} deleteCourse={deleteCourse} course={course} key={course.id} />)}
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Switch, Route } from "react-router-dom";
 import CourseList from './CourseList';
+import EditCourseForm from './EditCourseForm';
 import Home from './Home';
 import LoginForm from './LoginForm';
 import Navbar from './Navbar';
@@ -11,6 +12,23 @@ const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [courses, setCourses] = useState([]);
+
+  // DELETE COURSE FUNCTION 
+  const deleteCourse = (id) => {
+    console.log(id)
+  };
+
+  // EDIT TOOL FUNCTION 
+  const editCourse = (editedCourse) => {
+    const updatedCourse = courses.map(course => {
+      if (editedCourse.id === course.id) {
+        return editedCourse
+      } else {
+        return course
+      }
+    })
+    setCourses(updatedCourse)
+  };
 
   useEffect(() => {
     fetch("/me")
@@ -28,7 +46,6 @@ const App = () => {
     useEffect(() => {
       fetch("/courses")
       .then(res => res.json())
-      // .then(data => console.log(data))
       .then(data => setCourses(data))
       .catch(error => console.log(error))
     }, []);
@@ -42,24 +59,28 @@ const App = () => {
           <Home user={user} setUser={setUser} />
         </Route>
 
-        <Route path="/signup">
+        <Route exact path="/signup">
           <SignupForm user={user} setUser={setUser} />
         </Route>
 
-        <Route path="/Login">
+        <Route exact path="/Login">
           <LoginForm user={user} setUser={setUser} />
         </Route>
 
-        <Route path="/courses">
-          <CourseList courses={courses} />
+        <Route exact path="/courses">
+          <CourseList deleteCourse={deleteCourse} courses={courses} />
         </Route>
 
-        <Route path="/NewCourseForm">
+        <Route exact path="/courses/new">
           <NewCourseForm addCourse={addCourse}/>
         </Route>
 
+        <Route exact path="/courses/:id/edit">
+          <EditCourseForm courses={courses} editCourse={editCourse} />
+        </Route>
+
         <Route path="*">
-          <h1>400 Page not found</h1>
+          <h1>404 Page not found</h1>
         </Route>
 
       </Switch>
