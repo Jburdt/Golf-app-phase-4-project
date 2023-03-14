@@ -14,8 +14,9 @@ const App = () => {
   const [courses, setCourses] = useState([]);
 
   // DELETE COURSE FUNCTION 
-  const deleteCourse = (id) => {
-    console.log(id)
+  const deletedCourse = (id) => {
+    const restOfCourses = courses.filter(course => course.id !== deletedCourse.id)
+    setCourses(restOfCourses)
   };
 
   // EDIT COURSE FUNCTION 
@@ -68,7 +69,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/courses">
-          <CourseList deleteCourse={deleteCourse} courses={courses} />
+          <CourseList deletedCourse={deletedCourse} courses={courses} />
         </Route>
 
         <Route exact path="/courses/new">
