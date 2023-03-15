@@ -11,18 +11,28 @@ const CourseCard = ({ course, deletedCourse }) => {
     fetch(`/courses/${course.id}`, {
       method:"DELETE"
     })
-    .then((data) => deletedCourse(course.id))
+    .then(deletedCourse(course.id))
   };
 
+  // EDIT BUTTONG STYLING
   const linkStyle = {
-    margin: "1rem",
-    textDecoration: "none",
-    color: 'blue',
+    color: 'white',
     backgroundColor: 'orange',
-    padding: 8,
-    margin: .5,
-    borderRadius: 5
-    
+    padding: 9,
+    margin: .1,
+    borderRadius: 5,
+    paddingBottom: 11,
+    paddingTop: 8
+  };
+
+  const deleteLinkStyle = {
+    color: 'white',
+    backgroundColor: 'red',
+    padding: 9,
+    margin: .1,
+    borderRadius: 5,
+    paddingBottom: 11,
+    paddingTop: 8
   };
 
   return (
@@ -40,7 +50,7 @@ const CourseCard = ({ course, deletedCourse }) => {
               <Button variant="secondary">not needed yet</Button>{' '}
               <Button variant="success">Book a Tee Time</Button>{' '}
               <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
-              <Link style={linkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
+              <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
             </Card.Body>
           </Card>
           <hr/>
