@@ -52,7 +52,7 @@ const EditCourseForm = ({ courses, editCourse }) => {
     .then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setFormData(data)
+          editCourse(data)
         history.push('/courses')})
       }
       else {

@@ -15,7 +15,7 @@ const App = () => {
 
   // DELETE COURSE FUNCTION 
   const deletedCourse = (id) => {
-    const restOfCourses = courses.filter(course => course.id !== deletedCourse.id)
+    const restOfCourses = courses.filter(course => course.id !== id)
     setCourses(restOfCourses)
   };
 
