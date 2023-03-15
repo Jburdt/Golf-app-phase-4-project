@@ -21,7 +21,6 @@ const EditCourseForm = ({ courses, editCourse }) => {
   useEffect(() => {
     if ( courses.length > 0) {
       const updatedCourse = courses.find(course => course.id === parseInt(id), 10)
-      console.log("Delete me line 23 edit course form", updatedCourse)
       setFormData({
         name: updatedCourse.name,
         address: updatedCourse.address,

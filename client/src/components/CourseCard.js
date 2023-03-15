@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const CourseCard = ({ course, deletedCourse }) => {
 
+  // DELETES COURSE 
   const handleDelete = () => {
     fetch(`/courses/${course.id}`, {
       method:"DELETE"

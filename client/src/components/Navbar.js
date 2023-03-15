@@ -2,17 +2,15 @@ import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
-const Navbar = ({ setUser, user }) => {
+const Navbar = ({ setUser }) => {
   const history = useHistory()
 
   const handleLogout = () => {
     fetch("/logout", {
       method: "DELETE",
     })
-    .then((user) => {
-      setUser({})
+    .then(setUser({}))
       history.push('/login')
-    })
   };
   
   return (
