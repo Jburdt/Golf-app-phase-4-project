@@ -8,7 +8,6 @@ const CourseList = ({ courses, editCourse, deletedCourse }) => {
   const renderNewForm = () => {
      history.push(`/courses/new`)
   };
-
   return (
     <>
       <h3>Below are the courses available to play.</h3>
