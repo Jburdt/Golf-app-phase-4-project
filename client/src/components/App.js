@@ -7,6 +7,7 @@ import LoginForm from './LoginForm';
 import Navbar from './Navbar';
 import NewCourseForm from './NewCourseForm';
 import SignupForm from './SignupForm';
+import TimeForm from './TimeForm';
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -78,6 +79,10 @@ const App = () => {
 
         <Route exact path="/courses/:id/edit">
           <EditCourseForm courses={courses} editCourse={editCourse} />
+        </Route>
+
+        <Route exact path="/golfer/tee-time">
+          <TimeForm />
         </Route>
 
         <Route path="*">

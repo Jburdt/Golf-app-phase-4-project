@@ -3,9 +3,14 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const CourseCard = ({ course, deletedCourse }) => {
+  const history = useHistory();
+
+  const toTimeForm = () => {
+    history.push('/golfer/tee-time')
+  };
 
   // DELETES COURSE 
   const handleDelete = () => {
@@ -36,6 +41,7 @@ const CourseCard = ({ course, deletedCourse }) => {
     paddingTop: 8
   };
 
+
   return (
     <>
       <Row xs={1} md={2} className="g-4">
@@ -49,7 +55,7 @@ const CourseCard = ({ course, deletedCourse }) => {
               <Card.Text>${parseFloat(course.cost).toFixed(2)}</Card.Text>
               <Button variant="primary">not needed yet</Button>{' '}
               <Button variant="secondary">not needed yet</Button>{' '}
-              <Button variant="success">Book a Tee Time</Button>{' '}
+              <Button onClick={() => toTimeForm()} variant="success">Book a Tee Time</Button>{' '}
               <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
               <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
             </Card.Body>

@@ -28,7 +28,7 @@ const EditCourseForm = ({ courses, editCourse }) => {
         image: updatedCourse.image
       })
     }
-  }, [courses])
+  }, [courses, id])
 
   const handleChange = (e) => {
     const { name, value} = e.target
