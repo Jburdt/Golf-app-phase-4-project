@@ -43,6 +43,21 @@ const App = () => {
     const addCourse = (newCourse) => {
       setCourses([newCourse, ...courses])
     };
+
+    const addedTimes = (newTime) => {
+      const updatedCourses = courses.map((course) => {
+        //add newTime to course
+        if (course.id === newTime.course_id) {
+          return {
+            ...course,
+            tee_times: [...course.tee_times, newTime ]
+          } 
+        } else {
+          return course
+        }
+      })
+      setCourses(updatedCourses)
+    };
   
     // Gets all the courses from backend
     useEffect(() => {
@@ -82,7 +97,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/courses/:id/tee-time">
-          <TimeForm  />
+          <TimeForm addedTimes={addedTimes}  />
         </Route>
 
         <Route path="*">

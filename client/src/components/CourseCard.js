@@ -43,7 +43,7 @@ const CourseCard = ({ course, deletedCourse }) => {
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <Row xs={1} md={2} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
           <Col key={idx}>
@@ -56,10 +56,10 @@ const CourseCard = ({ course, deletedCourse }) => {
                     <Button onClick={() => toTimeForm(course.id)} variant="success">Book a Tee Time</Button>{' '}
                     <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
                     <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
-                    
+
                   </Card.Body>
                     <ListGroup>
-                      { course.tee_times.map(time => <ListGroup.Item>{time.time_format}</ListGroup.Item>) }
+                      { course.tee_times.map(time => <ListGroup.Item key={time.id}>{time.time_format}</ListGroup.Item>) }
                     </ListGroup>
             </Card>
             <hr/>

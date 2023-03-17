@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-const TimeForm = () => {
+const TimeForm = ({ addedTimes }) => {
   const [time, setTime] = useState('');
   const {id} = useParams();
   const history = useHistory();
@@ -20,7 +20,7 @@ const TimeForm = () => {
     .then((response) => {
       if (response.ok) {
         response.json().then((time) => {
-          setTime(time)
+          addedTimes(time)
         history.push('/courses')})
       }
       else {
