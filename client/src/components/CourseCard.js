@@ -49,7 +49,6 @@ const CourseCard = ({ course, deletedCourse }) => {
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col key={idx}>
           <Card>
-          { course.tee_times.map(time => <ul>{time.time_format} <button>delete</button></ul>) }
             <Card.Img variant="top" src={course.image} />
             <Card.Body>
               <Card.Title>{course.name}</Card.Title>
@@ -61,6 +60,9 @@ const CourseCard = ({ course, deletedCourse }) => {
               <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
               <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
             </Card.Body>
+                <ListGroup>
+                  { course.tee_times.map(time => <ListGroup.Item>{time.time_format}</ListGroup.Item>) }
+                </ListGroup>
           </Card>
           <hr/>
         </Col>

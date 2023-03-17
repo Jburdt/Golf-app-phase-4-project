@@ -16,13 +16,12 @@ const TimeForm = () => {
       body: JSON.stringify({time, course_id: id})
     })
     .then((res) => res.json())
-    .then(data => console.log(data))
+    .then(data => setTime(data))
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Selecte a time to play at </h2>
-
+      <h2>Selecte a time to play!</h2>
         <div>
           <label htmlFor="ttime">Tee-Time:</label><br/>
             <input 
