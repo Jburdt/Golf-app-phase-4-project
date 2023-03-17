@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
-// import LoginForm from './LoginForm';
-// import SignupForm from './SignupForm';
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router-dom';
 
-const Home = ({ user, setUser}) => {
-  // const [currentForm, setCurrentForm] = useState("LoginForm");
+const Home = () => {
+  const history = useHistory();
 
-  // const toggleForm = (formName) => {
-  //   setCurrentForm(formName)
-  // };
+  const toLogin = () => {
+    history.push("/login")
+  }
+
+  const toSignUp = () => {
+    history.push("/signup")
+  }
 
   return (
-    <> 
-      <h1 className='welcome'>Welcome to Golf Buddy!</h1>
-      <p> Join a community of golfers!</p>
-      {/* <div>{ <LoginForm user={user} setUser={setUser} /> } </div> */}
-      {/* <div>{ currentForm === "LoginForm" ? <LoginForm user={user} setUser={setUser} toggleForm={toggleForm} />  : <SignupForm toggleForm={toggleForm} /> }</div> */}
- 
+    <>
+      <div style={{ display: "center", justifyContent: "center", alignItems: "center"}} className="d-grid gap-2">
+        <h1 style={{ textAlign: 'center', border: "2px solid black"}} className='welcome'>🏌️‍♀️ Welcome to Golf Buddy!🏌️‍♂️ </h1>
+          <h5 style={{ textAlign: 'center' }}>Join a community of golfers!</h5>
+            <Button onClick={() => toLogin()} variant="outline-success" size="lg">
+              Log in
+            </Button>
+            <Button onClick={() => toSignUp()} variant="outline-info" size="lg">
+              Sign up here
+            </Button>
+      </div>
     </>
   )
 }
