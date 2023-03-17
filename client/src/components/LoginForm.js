@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
 
-  const LoginForm = ({ user, setUser }) => {
+  const LoginForm = ({ setUser }) => {
     const history = useHistory("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ import { useHistory } from 'react-router-dom';
   });
 }
   return (
-    <div className='auth-form-container'>
+    <div className='auth-form-container' class="container">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>
@@ -48,7 +48,6 @@ import { useHistory } from 'react-router-dom';
                 We'll never share your email with anyone else.
               </Form.Text>
                 </Form.Group>
-
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control 

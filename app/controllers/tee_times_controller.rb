@@ -1,5 +1,7 @@
 class TeeTimesController < ApplicationController
   skip_before_action :authorize,only: [:index, :destroy]
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
 
   #gets all teetimes
   def index
@@ -37,6 +39,11 @@ class TeeTimesController < ApplicationController
   # Finds ttime 
   def find_ttimes
     TeeTime.all.find(params[:id])
+  end
+
+   # INVALID DATA RESPONSE
+   def render_unprocessable_entity_response(invalid)
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end

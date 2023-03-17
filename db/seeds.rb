@@ -20,8 +20,8 @@ water_mark = Course.create!(name: "Water Mark", address:"5500 Cascade Rd SE Gran
 
 #TeeTimes
 tee_times2 = TeeTime.create!(golfer: mike, course: cascade_hills, time: "09:30")
-tee_times3 = TeeTime.create!(golfer: jared, course: the_mines, time: "09:30")
-tee_times4 = TeeTime.create!(golfer: lizzie, course: grand_rapids_country_club, time: "09:30")
-tee_times5 = TeeTime.create!(golfer: jordan, course: water_mark, time: "09:30")
+tee_times3 = TeeTime.create!(golfer: jared, course: the_mines, time: "08:30")
+tee_times4 = TeeTime.create!(golfer: lizzie, course: grand_rapids_country_club, time: "07:30")
+tee_times5 = TeeTime.create!(golfer: jordan, course: water_mark, time: "06:30")
 
 puts 'Done Seeding'

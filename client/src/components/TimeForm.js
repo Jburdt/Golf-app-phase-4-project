@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 const TimeForm = () => {
   const [time, setTime] = useState('');
   const {id} = useParams();
+  const history = useHistory();
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,8 +17,18 @@ const TimeForm = () => {
       },
       body: JSON.stringify({time, course_id: id})
     })
-    .then((res) => res.json())
-    .then(data => setTime(data))
+    .then((response) => {
+      if (response.ok) {
+        response.json().then((time) => {
+          setTime(time)
+        history.push('/courses')})
+      }
+      else {
+      response.json().then((err) => {
+        setErrors(err.errors)
+      })
+    }
+  });
   };
 
   return (
@@ -34,6 +46,8 @@ const TimeForm = () => {
             />
         </div>
        <input type="submit" value="Book Tee-Time"/>
+       <div>{errors}</div>
+       
     </form>
   )
 }

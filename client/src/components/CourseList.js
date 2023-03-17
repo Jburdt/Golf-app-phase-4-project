@@ -10,13 +10,13 @@ const CourseList = ({ courses, editCourse, deletedCourse }) => {
   };
 
   return (
-    <>
-      <h3>Below are the courses available to play.</h3>
-          <Button onClick={() => renderNewForm()} variant="primary" size="lg">
+    <div class="container">
+      <h3 class="text-center">Below are the courses available to play</h3>
+          <Button onClick={() => renderNewForm()} variant="outline-primary" size="lg">
             Add new course
-          </Button>
+          </Button><hr/>
       { courses.map((course) => <CourseCard editCourse={editCourse} courses={courses} deletedCourse={deletedCourse} course={course} key={course.id} />)}
-    </>
+    </div>
   )
 }
 

@@ -43,31 +43,30 @@ const CourseCard = ({ course, deletedCourse }) => {
   };
 
   return (
-    <>
+    <div class="container">
       <Row xs={1} md={2} className="g-4">
-      {Array.from({ length: 1 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src={course.image} />
-            <Card.Body>
-              <Card.Title>{course.name}</Card.Title>
-              <Card.Text>{course.address}</Card.Text>
-              <Card.Text>${parseFloat(course.cost).toFixed(2)}</Card.Text>
-              <Button variant="primary">not needed yet</Button>{' '}
-              <Button variant="secondary">not needed yet</Button>{' '}
-              <Button onClick={() => toTimeForm(course.id)} variant="success">Book a Tee Time</Button>{' '}
-              <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
-              <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
-            </Card.Body>
-                <ListGroup>
-                  { course.tee_times.map(time => <ListGroup.Item>{time.time_format}</ListGroup.Item>) }
-                </ListGroup>
-          </Card>
-          <hr/>
-        </Col>
-      ))}
-    </Row>
-    </>
+        {Array.from({ length: 1 }).map((_, idx) => (
+          <Col key={idx}>
+            <Card>
+              <Card.Img variant="top" src={course.image} />
+                  <Card.Body>
+                    <Card.Title>{course.name}</Card.Title>
+                    <Card.Text>{course.address}</Card.Text>
+                    <Card.Text>${parseFloat(course.cost).toFixed(2)}</Card.Text>
+                    <Button onClick={() => toTimeForm(course.id)} variant="success">Book a Tee Time</Button>{' '}
+                    <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
+                    <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
+                    
+                  </Card.Body>
+                    <ListGroup>
+                      { course.tee_times.map(time => <ListGroup.Item>{time.time_format}</ListGroup.Item>) }
+                    </ListGroup>
+            </Card>
+            <hr/>
+          </Col>
+        ))}
+      </Row>
+    </div>
   )
 }
 
