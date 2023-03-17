@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+// import LoginForm from './LoginForm';
+// import SignupForm from './SignupForm';
 
 const Home = ({ user, setUser}) => {
-  const [currentForm, setCurrentForm] = useState("LoginForm");
+  // const [currentForm, setCurrentForm] = useState("LoginForm");
 
-  const toggleForm = (formName) => {
-    setCurrentForm(formName)
-  };
+  // const toggleForm = (formName) => {
+  //   setCurrentForm(formName)
+  // };
 
   return (
     <> 
-      <h1>Welcome to Golf Buddy!</h1>
+      <h1 className='welcome'>Welcome to Golf Buddy!</h1>
       <p> Join a community of golfers!</p>
-      <div>{ currentForm === "LoginForm" ? <LoginForm user={user} setUser={setUser} toggleForm={toggleForm} />  : <SignupForm toggleForm={toggleForm} /> }</div>
+      {/* <div>{ <LoginForm user={user} setUser={setUser} /> } </div> */}
+      {/* <div>{ currentForm === "LoginForm" ? <LoginForm user={user} setUser={setUser} toggleForm={toggleForm} />  : <SignupForm toggleForm={toggleForm} /> }</div> */}
+ 
     </>
   )
 }

@@ -19,9 +19,9 @@ grand_rapids_country_club = Course.create!(name: "Grand Rapids", address:"4300 L
 water_mark = Course.create!(name: "Water Mark", address:"5500 Cascade Rd SE Grand Rapids, MI 49546-9059", cost: 25.00, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrAmqsstlLmQhC-opt1sLiplbYP3s1OC0fA&usqp=CAU")
 
 #TeeTimes
-tee_times2 = TeeTime.create!(golfer: mike, course: cascade_hills, time: "9:30")
-tee_times3 = TeeTime.create!(golfer: jared, course: the_mines, time: "9:30")
-tee_times4 = TeeTime.create!(golfer: lizzie, course: grand_rapids_country_club, time: "9:30")
-tee_times5 = TeeTime.create!(golfer: jordan, course: water_mark, time: "9:30")
+tee_times2 = TeeTime.create!(golfer: mike, course: cascade_hills, time: "09:30")
+tee_times3 = TeeTime.create!(golfer: jared, course: the_mines, time: "09:30")
+tee_times4 = TeeTime.create!(golfer: lizzie, course: grand_rapids_country_club, time: "09:30")
+tee_times5 = TeeTime.create!(golfer: jordan, course: water_mark, time: "09:30")
 
 puts 'Done Seeding'

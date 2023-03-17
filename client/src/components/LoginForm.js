@@ -33,7 +33,6 @@ import { useHistory } from 'react-router-dom';
     }
   });
 }
-
   return (
     <div className='auth-form-container'>
       <Form onSubmit={handleSubmit}>

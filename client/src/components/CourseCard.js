@@ -4,12 +4,13 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Link, useHistory } from 'react-router-dom';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const CourseCard = ({ course, deletedCourse }) => {
   const history = useHistory();
 
-  const toTimeForm = () => {
-    history.push('/golfer/tee-time')
+  const toTimeForm = (id) => {
+    history.push(`/courses/${id}/tee-time`)
   };
 
   // DELETES COURSE 
@@ -48,6 +49,7 @@ const CourseCard = ({ course, deletedCourse }) => {
       {Array.from({ length: 1 }).map((_, idx) => (
         <Col key={idx}>
           <Card>
+          { course.tee_times.map(time => <ul>{time.time_format} <button>delete</button></ul>) }
             <Card.Img variant="top" src={course.image} />
             <Card.Body>
               <Card.Title>{course.name}</Card.Title>
@@ -55,7 +57,7 @@ const CourseCard = ({ course, deletedCourse }) => {
               <Card.Text>${parseFloat(course.cost).toFixed(2)}</Card.Text>
               <Button variant="primary">not needed yet</Button>{' '}
               <Button variant="secondary">not needed yet</Button>{' '}
-              <Button onClick={() => toTimeForm()} variant="success">Book a Tee Time</Button>{' '}
+              <Button onClick={() => toTimeForm(course.id)} variant="success">Book a Tee Time</Button>{' '}
               <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
               <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
             </Card.Body>

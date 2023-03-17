@@ -81,8 +81,8 @@ const App = () => {
           <EditCourseForm courses={courses} editCourse={editCourse} />
         </Route>
 
-        <Route exact path="/golfer/tee-time">
-          <TimeForm />
+        <Route exact path="/courses/:id/tee-time">
+          <TimeForm  />
         </Route>
 
         <Route path="*">

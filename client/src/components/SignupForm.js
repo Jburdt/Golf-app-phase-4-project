@@ -10,7 +10,7 @@ const SignupForm = ({ user, setUser }) => {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  const history = useHistory("")
+  const history = useHistory("");
 
   const handleSubmit = (e) => {
     e.preventDefault()

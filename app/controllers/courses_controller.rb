@@ -2,7 +2,6 @@ class CoursesController < ApplicationController
   skip_before_action :authorize
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-
   #GET /courses
   def index
     courses = Course.all 
@@ -21,7 +20,7 @@ class CoursesController < ApplicationController
     render json: course, status: :created
   end
 
-  #Updates couse 
+  #Updates course 
   def update
     @course = find_course
     @course.update!(course_params)
