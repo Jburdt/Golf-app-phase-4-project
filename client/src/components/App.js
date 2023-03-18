@@ -31,7 +31,8 @@ const App = () => {
     })
     setCourses(updatedCourse)
   };
-
+  
+  // See what user is currently loggeg in
   useEffect(() => {
     fetch("/me")
     .then(resp => resp.json())
@@ -44,9 +45,9 @@ const App = () => {
       setCourses([newCourse, ...courses])
     };
 
+    // Setting a tee time
     const addedTimes = (newTime) => {
       const updatedCourses = courses.map((course) => {
-        //add newTime to course
         if (course.id === newTime.course_id) {
           return {
             ...course,

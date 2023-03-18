@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 const Navbar = ({ setUser }) => {
-  const history = useHistory()
+  const history = useHistory();
 
   const handleLogout = () => {
     fetch("/logout", {
