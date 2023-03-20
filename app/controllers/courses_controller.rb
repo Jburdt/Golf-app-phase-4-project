@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  # skip_before_action :authorize, only: [:index]
+  before_action :authorize
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   #GET /courses
@@ -50,8 +50,8 @@ class CoursesController < ApplicationController
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 
-  # def authorize
-  #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :golfer_id
-  # end
+  def authorize
+    return render json: { error: "Not authorized, please log in." }, status: :unauthorized unless session.include? :golfer_id
+  end
 
 end

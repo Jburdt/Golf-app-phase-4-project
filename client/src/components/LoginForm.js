@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router-dom';
 
-  const LoginForm = ({ setUser }) => {
+  const LoginForm = ({ setUser, setLoggedIn }) => {
     const history = useHistory("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -24,6 +24,7 @@ import { useHistory } from 'react-router-dom';
       if (response.ok) {
         response.json().then((user) => {
           setUser(user)
+          setLoggedIn(true)
         history.push('/courses')})
       }
       else {

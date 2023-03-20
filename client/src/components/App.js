@@ -13,6 +13,7 @@ const App = () => {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [courses, setCourses] = useState([]);
+  const [error, setError] = useState([]);
 
   // DELETE COURSE FUNCTION 
   const deletedCourse = (id) => {
@@ -31,7 +32,7 @@ const App = () => {
     })
     setCourses(updatedCourse)
   };
-  
+
   // See what user is currently loggeg in
   useEffect(() => {
     fetch("/me")
@@ -61,16 +62,34 @@ const App = () => {
     };
   
     // Gets all the courses from backend
+
+    // useEffect(() => {
+    //   fetch("/courses")
+    //   .then(res => res.json())
+    //   .then(data => setCourses(data))
+    //   .catch(error => console.log(error))
+    // }, []);
+
     useEffect(() => {
       fetch("/courses")
-      .then(res => res.json())
-      .then(data => setCourses(data))
-      .catch(error => console.log(error))
-    }, []);
+      .then((response) => {
+        if (response.ok) {
+          response.json()
+          .then((data) => {
+          setCourses(data)})
+        }
+        else {
+        response.json()
+        .then((err) => {
+          setError(err.error)
+        })
+      }
+    })
+  }, [])
 
   return (
     <div>
-      <Navbar setUser={setUser} user={user} />
+      <Navbar setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
       <Switch>
 
         <Route exact path="/">
@@ -82,11 +101,11 @@ const App = () => {
         </Route>
 
         <Route exact path="/Login">
-          <LoginForm user={user} setUser={setUser} />
+          <LoginForm user={user} setUser={setUser} setLoggedIn={setLoggedIn} />
         </Route>
 
         <Route exact path="/courses">
-          <CourseList deletedCourse={deletedCourse} courses={courses} />
+          <CourseList deletedCourse={deletedCourse} courses={courses} error={error} />
         </Route>
 
         <Route exact path="/courses/new">

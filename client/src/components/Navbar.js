@@ -2,15 +2,18 @@ import React from 'react';
 import { Link, useHistory } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
-const Navbar = ({ setUser }) => {
+const Navbar = ({ setUser, setLoggedIn, loggedIn }) => {
   const history = useHistory();
 
   const handleLogout = () => {
     fetch("/logout", {
       method: "DELETE",
     })
-    .then(setUser({}))
+    .then(() => {
+      setUser({})
+      setLoggedIn(false)
       history.push('/login')
+    })
   };
   
   return (
@@ -18,13 +21,9 @@ const Navbar = ({ setUser }) => {
     <nav>
       <Link to="/">Home</Link>
       <br/>
-      <Link to="/signup">Sign Up</Link>
+      { loggedIn ? <Link to="/courses">Courses</Link> : <Link to="/login">Login</Link> }
       <br/>
-      <Link to="/login">Login</Link>
-      <br/>
-      <Link to="/courses">Courses</Link>
-      <br/>
-      <Button onClick={handleLogout} variant="danger">Logout</Button>{' '}
+      { loggedIn ? <Button onClick={handleLogout} variant="danger">Logout</Button> : (null, <Link to="/signup">Sign Up</Link>) }
     </nav>
   </header> 
   )

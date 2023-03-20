@@ -2,9 +2,8 @@ import CourseCard from './CourseCard';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const CourseList = ({ courses, editCourse, deletedCourse }) => {
+const CourseList = ({ courses, editCourse, deletedCourse, error }) => {
   const history = useHistory();
-  console.log(courses, editCourse, deletedCourse )
   const renderNewForm = () => {
      history.push(`/courses/new`)
   };
@@ -12,10 +11,19 @@ const CourseList = ({ courses, editCourse, deletedCourse }) => {
   return (
     <div className="container">
       <h3 className="text-center">Below are the courses available to play</h3>
-          <Button onClick={() => renderNewForm()} variant="outline-primary" size="lg">
+          <Button className='addCourse' onClick={() => renderNewForm()} variant="outline-primary" size="lg">
             Add new course
-          </Button>
-      { courses.map((course) => <CourseCard editCourse={editCourse} courses={courses} deletedCourse={deletedCourse} course={course} key={course.id} />)}
+          </Button><hr/>
+          <div>{error}</div>
+      { courses.map((course) => {
+        return <CourseCard 
+        editCourse={editCourse} 
+        courses={courses} 
+        deletedCourse={deletedCourse} 
+        course={course} 
+        key={course.id} 
+      /> 
+      })}
     </div>
   )
 }
