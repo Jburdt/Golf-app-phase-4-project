@@ -62,14 +62,6 @@ const App = () => {
     };
   
     // Gets all the courses from backend
-
-    // useEffect(() => {
-    //   fetch("/courses")
-    //   .then(res => res.json())
-    //   .then(data => setCourses(data))
-    //   .catch(error => console.log(error))
-    // }, []);
-
     useEffect(() => {
       fetch("/courses")
       .then((response) => {
@@ -89,7 +81,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+      <Navbar setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} user={user} />
       <Switch>
 
         <Route exact path="/">

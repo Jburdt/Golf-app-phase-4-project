@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 const CourseList = ({ courses, editCourse, deletedCourse, error }) => {
   const history = useHistory();
+  
   const renderNewForm = () => {
      history.push(`/courses/new`)
   };

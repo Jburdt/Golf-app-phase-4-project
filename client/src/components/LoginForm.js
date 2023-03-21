@@ -13,6 +13,7 @@ import { useHistory } from 'react-router-dom';
     // LOGIN FEATURE
   const handleSubmit = (e) => {
     e.preventDefault()
+
     fetch("/login", {
       method: "POST",
       headers: {
@@ -25,7 +26,8 @@ import { useHistory } from 'react-router-dom';
         response.json().then((user) => {
           setUser(user)
           setLoggedIn(true)
-        history.push('/courses')})
+        history.push('/courses')
+      })
       }
       else {
       response.json().then((err) => {
@@ -34,8 +36,9 @@ import { useHistory } from 'react-router-dom';
     }
   });
 }
+
   return (
-    <div className='auth-form-container' class="container">
+    <div className='container' >
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Username</Form.Label>

@@ -44,7 +44,7 @@ const CourseCard = ({ course, deletedCourse }) => {
 
   return (
     <div className="container">
-      <Row xs={1} md={2} className="g-4">
+      <Row xs={1} md={1} className="g-4">
         {Array.from({ length: 1 }).map((_, idx) => (
           <Col key={idx}>
             <Card>

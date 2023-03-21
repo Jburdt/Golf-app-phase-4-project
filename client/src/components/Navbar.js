@@ -16,8 +16,10 @@ const Navbar = ({ setUser, setLoggedIn, loggedIn }) => {
     })
   };
   
+ 
+
   return (
-  <header className='navbar'>
+  <header style={{ marginLeft: "30px"}} className='navbar'>
     <nav>
       <Link to="/">Home</Link>
       <br/>
