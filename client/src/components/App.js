@@ -81,7 +81,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} user={user} />
+      <Navbar setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
       <Switch>
 
         <Route exact path="/">

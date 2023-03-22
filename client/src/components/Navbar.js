@@ -15,8 +15,6 @@ const Navbar = ({ setUser, setLoggedIn, loggedIn }) => {
       history.push('/login')
     })
   };
-  
- 
 
   return (
   <header style={{ marginLeft: "30px"}} className='navbar'>

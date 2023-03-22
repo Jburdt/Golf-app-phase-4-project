@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 const SignupForm = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory("");
@@ -17,8 +16,7 @@ const SignupForm = ({ setUser }) => {
     const user = {
       name,
         username,
-        password,
-        password_confirmation: passwordConfirmation
+        password
     }
     fetch("/signup", {
       method: "POST",
@@ -42,7 +40,7 @@ const SignupForm = ({ setUser }) => {
   };
 
   return (
-    <div class="container"> 
+    <div className="container"> 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="Name">
           <Form.Label>Full Name</Form.Label>
@@ -59,14 +57,6 @@ const SignupForm = ({ setUser }) => {
           <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="PasswordConfirmation">
-          <Form.Label>Password Confirmation</Form.Label>
-          <Form.Control type="password" placeholder="Password Confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
-        </Form.Group>
-        <Form.Text className="text-muted">
-              Please enter password again.
-        </Form.Text>
-        <br/>
         <Button variant="primary" type="submit">
           Submit
         </Button>

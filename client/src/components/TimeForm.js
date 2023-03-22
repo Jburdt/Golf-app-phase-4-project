@@ -5,7 +5,7 @@ const TimeForm = ({ addedTimes }) => {
   const [time, setTime] = useState('');
   const {id} = useParams();
   const history = useHistory();
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

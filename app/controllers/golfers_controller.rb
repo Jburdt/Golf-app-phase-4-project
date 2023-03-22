@@ -8,7 +8,7 @@ class GolfersController < ApplicationController
     render json: golfers
   end
 
-  #/signup & logging in 
+  #/signup 
   def create
     golfer = Golfer.create!(golfer_params)
     session[:golfer_id] = golfer.id

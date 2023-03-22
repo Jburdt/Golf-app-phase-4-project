@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   private
   # finds course by :id
   def find_course
-    Course.all.find(params[:id])
+    Course.all.find_by(params[:id])
   end
 
   #course strong params
@@ -48,10 +48,6 @@ class CoursesController < ApplicationController
   # INVALID DATA RESPONSE
   def render_unprocessable_entity_response(invalid)
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-  end
-
-  def authorize
-    return render json: { error: "Not authorized, please log in." }, status: :unauthorized unless session.include? :golfer_id
   end
 
 end
