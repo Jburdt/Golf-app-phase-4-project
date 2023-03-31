@@ -5,7 +5,7 @@
 * BCrypt
 
 ## Description
-This is an app that allows users to add keep track of the courses you play at. You can see the tee times that are available to you and make one if you choose. A user can create a account at anytime. 
+This is an app that allows users to add keep track of the courses you play at. You can see the tee times that are available to you and make one if you choose. A user can create a account at anytime. You can also add a new course to play at.
 
 ### Installation
 * fork and clone project
