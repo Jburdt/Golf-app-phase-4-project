@@ -17,10 +17,5 @@ class SessionsController < ApplicationController
     session.delete :golfer_id
     head :no_content
   end
-
-  def authorize
-    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :golfer_id
-  end
-
 end
 

@@ -19,7 +19,8 @@ class TeeTimesController < ApplicationController
   #   @t_time = find_ttimes
   #   @t_time.update!(tt_params)
   #   render json: @t_time
-  # end
+    # conditional coding so a user cant update other ttimes
+  end
 
   # #Delete teetime
   # def destroy
