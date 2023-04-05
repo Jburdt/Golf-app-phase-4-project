@@ -1,5 +1,5 @@
 class TeeTimesController < ApplicationController
-  skip_before_action :authorize, only: [:index]
+  skip_before_action :authorize, only: [:index, top_tee_times]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   #gets all teetimes
@@ -14,12 +14,15 @@ class TeeTimesController < ApplicationController
     render json: t_time, status: :created
   end
 
-  # # Updates params
-  # def update 
-  #   @t_time = find_ttimes
-  #   @t_time.update!(tt_params)
-  #   render json: @t_time
-    # conditional coding so a user cant update other ttimes
+  # Updates params
+  def update 
+    @t_time = find_ttimes
+      if t_time.golfer_id == @current_golfer.id
+        @t_time.update!(tt_params)
+        render json: @t_time
+      else
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+      end
   end
 
   # #Delete teetime
@@ -28,6 +31,12 @@ class TeeTimesController < ApplicationController
   #   @t_time.destroy
   #   head :no_content
   # end
+
+  def top_tee_times
+    golfer = Golfer.all.find_by(id: params[:user_id])
+    golfer_times = golfer.tee_times.map{ |ttime| ttime.time.to_formatted_s(:time) }
+    render json: golfer_times
+  end
 
   private
 

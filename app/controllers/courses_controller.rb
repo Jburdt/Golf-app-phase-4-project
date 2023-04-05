@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   private
   # finds course by :id
   def find_course
-    Course.all.find_by(params[:id])
+    Course.all.find_by(id: params[:id])
   end
 
   #course strong params
