@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { Link, useHistory } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const CourseCard = ({ course, deletedCourse }) => {
+const CourseCard = ({ course, deletedCourse, user }) => {
   const history = useHistory();
 
   const toTimeForm = (id) => {
@@ -42,6 +42,16 @@ const CourseCard = ({ course, deletedCourse }) => {
     paddingTop: 8
   };
 
+  const displayUser = (user) => {
+    console.log(user)
+    if (course.tee_times.id === user.id){
+       return user.name
+      } 
+    else {
+      return null
+    } 
+  };
+
   return (
     <div className="container">
       <Row xs={1} md={1} className="g-4">
@@ -56,10 +66,9 @@ const CourseCard = ({ course, deletedCourse }) => {
                     <Button onClick={() => toTimeForm(course.id)} variant="success">Book a Tee Time</Button>{' '}
                     <Link style={linkStyle} to={`/courses/${course.id}/edit`}>Edit</Link>{' '}
                     <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
-
                   </Card.Body>
                     <ListGroup>
-                      { course.tee_times.map(time => <ListGroup.Item key={time.id}>{time.time_format}</ListGroup.Item>) }
+                      { course.tee_times.map(time => <ListGroup.Item key={time.id}>{time.time_format} :{displayUser} </ListGroup.Item>) }
                     </ListGroup>
             </Card>
             <hr/>

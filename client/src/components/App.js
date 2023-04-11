@@ -97,7 +97,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/courses">
-          <CourseList deletedCourse={deletedCourse} courses={courses} error={error} />
+          <CourseList deletedCourse={deletedCourse} courses={courses} user={user} error={error} />
         </Route>
 
         <Route exact path="/courses/new">

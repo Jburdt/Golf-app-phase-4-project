@@ -1,5 +1,5 @@
 class TeeTimesController < ApplicationController
-  skip_before_action :authorize, only: [:index, top_tee_times]
+  skip_before_action :authorize, only: [:index]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   #gets all teetimes
@@ -31,12 +31,6 @@ class TeeTimesController < ApplicationController
   #   @t_time.destroy
   #   head :no_content
   # end
-
-  def top_tee_times
-    golfer = Golfer.all.find_by(id: params[:user_id])
-    golfer_times = golfer.tee_times.map{ |ttime| ttime.time.to_formatted_s(:time) }
-    render json: golfer_times
-  end
 
   private
 
