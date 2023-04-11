@@ -4,7 +4,7 @@ class TeeTimesController < ApplicationController
 
   #gets all teetimes
   def index
-    teetimes = Tee_times.all 
+    teetimes = TeeTime.all 
     render json: teetimes
   end
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-const TimeForm = ({ addedTimes }) => {
+const TimeForm = ({ addedTimes, user }) => {
   const [time, setTime] = useState('');
   const {id} = useParams();
   const history = useHistory();
@@ -21,7 +21,9 @@ const TimeForm = ({ addedTimes }) => {
       if (response.ok) {
         response.json().then((time) => {
           addedTimes(time)
+          console.log(user) // DELETE ME
         history.push('/courses')})
+        // FIGURE OUT HOW TO TELL THE PARENT COMPONENT THAT THE TIME HAS BEED UPDATED 
       }
       else {
       response.json().then((err) => {
@@ -43,7 +45,7 @@ const TimeForm = ({ addedTimes }) => {
               value={time}
               onChange = {(e) => setTime(e.target.value)}
               required={true}
-            />
+              />
         </div>
        <input type="submit" value="Book Tee-Time"/>
        <div>{errors}</div>

@@ -52,7 +52,7 @@ const App = () => {
         if (course.id === newTime.course_id) {
           return {
             ...course,
-            tee_times: [...course.tee_times, newTime ]
+            tee_times: [...course.tee_times, newTime]
           } 
         } else {
           return course
@@ -109,7 +109,7 @@ const App = () => {
         </Route>
 
         <Route exact path="/courses/:id/tee-time">
-          <TimeForm addedTimes={addedTimes}  />
+          <TimeForm addedTimes={addedTimes} user={user} courses={courses} />
         </Route>
 
         <Route path="*">

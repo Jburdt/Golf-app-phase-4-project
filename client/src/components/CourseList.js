@@ -2,7 +2,7 @@ import CourseCard from './CourseCard';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const CourseList = ({ courses, editCourse, deletedCourse, error, user }) => {
+const CourseList = ({ courses, editCourse, deletedCourse, error }) => {
   const history = useHistory();
   
   const renderNewForm = () => {
@@ -21,8 +21,7 @@ const CourseList = ({ courses, editCourse, deletedCourse, error, user }) => {
         editCourse={editCourse} 
         courses={courses} 
         deletedCourse={deletedCourse} 
-        course={course} 
-        user={user}
+        course={course}
         key={course.id} 
       /> 
       })}
