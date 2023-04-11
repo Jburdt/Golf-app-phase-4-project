@@ -12,7 +12,7 @@ const Navbar = ({ setUser, setLoggedIn, loggedIn }) => {
     .then(() => {
       setUser({})
       setLoggedIn(false)
-      history.push('/login')
+      history.push('/')
     })
   };
 
