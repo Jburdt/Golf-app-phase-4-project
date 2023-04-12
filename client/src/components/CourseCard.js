@@ -58,7 +58,7 @@ const CourseCard = ({ course, deletedCourse }) => {
                     <Link style={deleteLinkStyle} to="/courses" onClick={() => {handleDelete(course.id)}} variant="danger">Delete</Link>{' '}
                   </Card.Body>
                     <ListGroup>
-                      { course.tee_times.map(time => <ListGroup.Item key={time.id}>{time.time_format} COURSECARD LINE 61</ListGroup.Item>) }
+                      { course.tee_times.map(time => <ListGroup.Item key={time.id}>{time.time_format} - {time.golfer.name}</ListGroup.Item>) }
                     </ListGroup>
             </Card>
             <hr/>

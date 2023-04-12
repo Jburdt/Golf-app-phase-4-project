@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  skip_before_action :authorize, only: [:index, :number]
+  skip_before_action :authorize, only: [:index]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   #GET /courses
@@ -32,12 +32,6 @@ class CoursesController < ApplicationController
     @course = find_course
     @course.destroy
     head :no_content
-  end
-
-  def number(n)
-    courses = Course.all.find_by(n: params[:n])
-    courses.sort { |a, b| a.courses.tee_times.length <=> b.courses.tee_times.length }
-    byebug
   end
 
   private
