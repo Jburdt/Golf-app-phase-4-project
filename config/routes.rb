@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "golfers#create"
   get "/me", to: "golfers#show"
-  get "/teed_courses/:n", to: "courses#number"
+
+  get '/courses/tee_times/:n', to: "tee_times#number"
+get '/courses/name/:n', to: "courses#name_length"
 end

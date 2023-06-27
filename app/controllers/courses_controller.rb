@@ -34,6 +34,12 @@ class CoursesController < ApplicationController
     head :no_content
   end
 
+  # all the characters that has :n or more in its name
+  def name_length
+   courses = Course.all.select { |course| course.name.length >= params[:n].to_i} 
+    render json: courses
+  end
+
   private
   # finds course by :id
   def find_course

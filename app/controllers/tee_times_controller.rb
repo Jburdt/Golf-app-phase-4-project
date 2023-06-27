@@ -1,5 +1,5 @@
 class TeeTimesController < ApplicationController
-  skip_before_action :authorize, only: [:index]
+  skip_before_action :authorize, only: [:index, :number]
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   #gets all teetimes
@@ -31,6 +31,11 @@ class TeeTimesController < ApplicationController
   #   @t_time.destroy
   #   head :no_content
   # end
+
+  def number
+    most_times = Course.all.select { |course| course.tee_times.length >= params[:n].to_i }
+    render json: most_times
+  end
 
   private
 
