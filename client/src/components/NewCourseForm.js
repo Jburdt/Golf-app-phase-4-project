@@ -44,10 +44,7 @@ const NewCourseForm = ({ addCourse }) => {
   };
 
   return (
-    <div
-      class="container d-flex justify-content-center"
-      id="new-course-div"
-    >
+    <div class="container d-flex justify-content-center" id="new-course-div">
       <Form onSubmit={handleSubmit} class="col-12">
         <h1>
           Add New <Badge bg="primary">Course</Badge>

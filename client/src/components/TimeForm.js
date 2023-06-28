@@ -20,7 +20,6 @@ const TimeForm = ({ addedTimes, user }) => {
       if (response.ok) {
         response.json().then((time) => {
           addedTimes(time);
-          console.log(user); // DELETE ME
           history.push("/courses");
         });
       } else {
@@ -32,24 +31,6 @@ const TimeForm = ({ addedTimes, user }) => {
   };
 
   return (
-    // <form onSubmit={handleSubmit}>
-    //   <h2>Selecte a time to play!</h2>
-    //   <div>
-    //     <label htmlFor="ttime">Tee-Time:</label>
-    //     <br />
-    //     <input
-    //       type="time"
-    //       id="time"
-    //       name="time"
-    //       value={time}
-    //       onChange={(e) => setTime(e.target.value)}
-    //       required={true}
-    //     />
-    //   </div>
-    //   <input type="submit" value="Book Tee-Time" />
-    //   <div>{errors}</div>
-    // </form>
-
     <div
       id="time-select"
       style={{
@@ -59,10 +40,12 @@ const TimeForm = ({ addedTimes, user }) => {
         height: "100vh",
       }}
     >
-      <form onSubmit={handleSubmit} style={{ marginBottom: "300px" }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: "350px" }}>
         <h2>Selecte a time to play!</h2>
         <div style={{ width: "350px", border: "solid", borderRadius: "5px" }}>
-          <label htmlFor="ttime">Select a time:</label>
+          <label htmlFor="ttime" style={{ margin: "2px" }}>
+            Select a time:
+          </label>
           <br />
           <input
             type="time"
@@ -71,7 +54,7 @@ const TimeForm = ({ addedTimes, user }) => {
             value={time}
             onChange={(e) => setTime(e.target.value)}
             required={true}
-            style={{ color: "red" }}
+            style={{ color: "red", margin: "5px" }}
           />
           <br />
         </div>
